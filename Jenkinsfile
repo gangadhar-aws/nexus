@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment{
         M2_HOME="/opt/maven"
+        DOCKER_IMAGE="MY_WEB_APPLICATION"
     }
 
     stages {
@@ -21,6 +22,17 @@ pipeline {
 
             }
         }
+
+        stage('Build Docker Image'){
+            steps{
+                script{
+                    dockerImage=docker.Build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
+                }
+
+            }
+        }
+
+
         
     }   
 }
