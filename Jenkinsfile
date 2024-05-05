@@ -39,24 +39,10 @@ pipeline {
                     withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
                     sh 'echo docker login success'
+                    sh 'docker push my_webapp:latest'
                 }
                 }
              }     
         }
-
-        stage('Docker Push'){
-            steps{
-                sh 'docker push my_webapp:latest'
-            }
-        }
-
-
-
-        // stage('Publish Image DH'){
-        //     steps{ 
-        //         withDockerRegistry([ credentialsId: "DOCKERHUB", url: "https://hub.docker.com/u/gangadharbsk" ])
-        //         sh 'docker push gangadharbsk/my_webapp:latest'
-        //     }
-        // }
     }
 }
