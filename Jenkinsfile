@@ -26,7 +26,6 @@ pipeline {
         stage('Build Docker Image'){
             steps{
                 script{
-                    sh 'sudo su -'
                     sh 'sudo docker build -t my_webapp:latest .'
                 }
 
