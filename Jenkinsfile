@@ -35,7 +35,7 @@ pipeline {
 
         stage('Publish Image DH'){
             steps{ 
-                withDockerRegistry([ credentialsId: "DOCKERHUB", url: "" ])
+                withDockerRegistry([ credentialsId: "DOCKERHUB", url: "https://hub.docker.com/u/gangadharbsk" ])
                 sh 'docker push gangadharbsk/my_webapp:latest'
             }
         }
