@@ -37,9 +37,7 @@ pipeline {
             steps{ 
                 withDockerRegistry([ credentialsId: "DOCKERHUB", url: "" ])
                 sh 'docker push gangadharbsk/my_webapp:latest'
+            }
         }
-
-
-        
-    }   
+    }
 }
