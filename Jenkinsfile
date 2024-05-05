@@ -44,5 +44,12 @@ pipeline {
                 }
              }     
         }
+
+        stage('Run Docker Container'){
+            steps{
+                sh 'docker run -d -p 8003:8080 gangadharbsk/siddhu_keerthi'
+             }     
+        }
+
     }
 }
