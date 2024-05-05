@@ -4,13 +4,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                sh "echo Helloworld"
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/gangadhar-aws/02-Maven-Webapp.git'
             }
         }
-        stage('Test') {
+        stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                sh "echo Helloworld"
+                sh "mvn clean package"
             }
         }
         stage('Deploy') {
