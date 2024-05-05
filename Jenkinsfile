@@ -2,7 +2,8 @@ pipeline {
     agent any
     environment{
         M2_HOME="/opt/maven"
-        DOCKER_CREDENTIALS=credentials('dockerhub')
+        DOCKER_HUB_CREDENTIALS = 'dockerhub'
+        DOCKER_REGISTRY = 'docker.io'
     }
 
     stages {
@@ -34,10 +35,14 @@ pipeline {
         }
         stage('Docker Login'){
             steps{
-                sh 'echo $DOCKER_CREDENTIALS_PSW | $$DOCKER_CREDENTIALS_USR --password-stdin'
-            }
+                script {
+                    docker.withRegistry("${DOCKER_REGISTRY}", "${DOCKER_HUB_CREDENTIALS}") 
+                    // {
+                    //     docker.image("${DOCKER_IMAGE_NAME}").push("${env.BUILD_NUMBER}")
+                    // }
+                }
+             }
         }
-
 
 
         // stage('Publish Image DH'){
