@@ -28,7 +28,7 @@ pipeline {
             steps{
                 script{
                     sh 'docker build -t my_webapp:latest .'
-                    sh 'docker tag my_webapp:latest gangadharbsk/my_webapp'
+                    sh 'docker tag my_webapp:latest gangadharbsk/siddhu_keerthi'
                 }
 
             }
@@ -39,7 +39,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
                     sh 'echo docker login success'
-                    sh 'docker push gangadharbsk/my_webapp'
+                    sh 'docker push gangadharbsk/siddhu_keerthi'
                 }
                 }
              }     
