@@ -27,6 +27,7 @@ pipeline {
             steps{
                 script{
                     sh 'docker build -t my_webapp:latest .'
+                    sh 'docker tag my_webapp gangadharbsk/my_webapp: $BUILD_NUMBER'
                 }
 
             }
