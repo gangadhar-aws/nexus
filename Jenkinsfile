@@ -41,8 +41,15 @@ pipeline {
                     sh 'echo docker login success'
                 }
                 }
-             }
+             }     
         }
+
+        stage('Docker Push'){
+            steps{
+                sh 'docker push my_webapp:$BUILD_NUMBER'
+            }
+        }
+
 
 
         // stage('Publish Image DH'){
