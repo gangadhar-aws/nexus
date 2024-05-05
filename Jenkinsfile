@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Get some code from a GitHub repository
-                sh "mvn clean package"
+                sh "clean package"
             }
         }
         stage('Deploy') {
