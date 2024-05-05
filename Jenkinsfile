@@ -36,10 +36,10 @@ pipeline {
         stage('Docker Login'){
             steps{
                 script {
-                    docker.withRegistry("${DOCKER_REGISTRY}", "${DOCKER_HUB_CREDENTIALS}") 
-                    // {
-                    //     docker.image("${DOCKER_IMAGE_NAME}").push("${env.BUILD_NUMBER}")
-                    // }
+                    withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
+                    sh 'echo docker login success'
+                }
                 }
              }
         }
