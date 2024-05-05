@@ -46,7 +46,7 @@ pipeline {
 
         stage('Docker Push'){
             steps{
-                sh 'docker push my_webapp:$BUILD_NUMBER'
+                sh 'docker push my_webapp:latest'
             }
         }
 
