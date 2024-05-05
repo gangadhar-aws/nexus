@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment{
         M2_HOME="/opt/maven"
-        DOCKER_IMAGE="tomcat"
+        DOCKER_CREDENTIALS=credentials('dockerhub')
     }
 
     stages {
@@ -32,12 +32,19 @@ pipeline {
 
             }
         }
-
-        stage('Publish Image DH'){
-            steps{ 
-                withDockerRegistry([ credentialsId: "DOCKERHUB", url: "https://hub.docker.com/u/gangadharbsk" ])
-                sh 'docker push gangadharbsk/my_webapp:latest'
+        stage('Docker Login'){
+            steps{
+                sh 'echo $DOCKER_CREDENTIALS_PSW | $$DOCKER_CREDENTIALS_USR --password-stdin'
             }
         }
+
+
+
+        // stage('Publish Image DH'){
+        //     steps{ 
+        //         withDockerRegistry([ credentialsId: "DOCKERHUB", url: "https://hub.docker.com/u/gangadharbsk" ])
+        //         sh 'docker push gangadharbsk/my_webapp:latest'
+        //     }
+        // }
     }
 }
