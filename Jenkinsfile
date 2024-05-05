@@ -1,21 +1,24 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Test"){
-            steps{
-                sh "echo "hello world"
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                sh "echo Helloworld"
             }
         }
-        stage("Build"){
-            steps{
-                sh "echo "hello world"
+        stage('Test') {
+            steps {
+                // Get some code from a GitHub repository
+                sh "echo Helloworld"
             }
         }
-        stage("Deploy"){
-            steps{
-                sh "echo "hello world"
+        stage('Deploy') {
+            steps {
+                // Get some code from a GitHub repository
+                sh "echo Helloworld"
             }
         }
-
-    }
+        
+    }   
 }
