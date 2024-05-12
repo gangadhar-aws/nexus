@@ -13,6 +13,16 @@ pipeline {
             }
         }
 
+        stage("Checkout"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gangadhar-aws/nexus.git']])
+            }
+        }
+
+
+
+
+
         // stage('Build') {
         //     steps {
         //         // Get some code from a GitHub repository
