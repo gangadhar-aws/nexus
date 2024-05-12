@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>in.gangadhar</groupId>
+  <artifactId>01-Web-App</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>01-Web-App Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+	<sonar.host.url>http://localhost:9000/</sonar.host.url>
+	<sonar.login>admin</sonar.login>
+	<sonar.password>admin</sonar.password>
+  </properties>
+  
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	<dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>01-Web-App</finalName>
+	<plugins>
+      <plugin>
+        <groupId>org.sonatype.plugins</groupId>
+        <artifactId>nexus-staging-maven-plugin</artifactId>
+        <version>1.6.3</version>
+        <extensions>true</extensions>
+        <configuration>
+              <serverId>nexus-releases</serverId>
+          <nexusUrl>http://localhost:8081/nexus/</nexusUrl>
+          <!-- update this to the correct id! -->
+          <stagingProfileId>1296f79efe04a4d0</stagingProfileId>
+        </configuration>
+      </plugin>
+  </build>
+  
+ <!-- Publish the versioned release here -->
+ <distributionManagement>
+    <snapshotRepository>
+    <id>snapshotnexus</id>
+    <url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+ </distributionManagement>
+  
+</project>
