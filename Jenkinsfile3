@@ -1,0 +1,20 @@
+piepline{
+    agent any
+    stages{
+        stage('Checkout'){
+            checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gangadhar-aws/nexus.git']])
+        }
+    }
+        stage('Build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Upload war to Nexus'){
+            steps{
+                sh "I am uploading artificats here"
+            }
+        }
+
+}
