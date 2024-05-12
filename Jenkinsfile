@@ -25,6 +25,20 @@ pipeline {
             }
         }
 
+        // stage("Publish to Nexus"){
+        //     steps{
+        //         script{
+        //             def nexusUrl = "http://localhost:8081/repository/maven-snapshots/"
+        //             def artifactPath = "target/${ARTIFACT_NAME}"
+        //             def server = Artifactory.server 'nexus'
+        //             def uploadSpec = """{
+
+        //             }"""
+        //         }
+
+        //     }
+        // }
+
 
 
 
