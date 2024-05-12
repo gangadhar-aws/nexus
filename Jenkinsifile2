@@ -30,8 +30,8 @@ pipeline{
                     [
                         artifactId: 'webapp', 
                         classifier: '', 
-                        file: 'target/webapp-1.0.1.war', 
-                        type: 'war'
+                        file: 'target/webapp-1.0.1.jar', 
+                        type: 'jar'
                         ]
                     ], 
                         credentialsId: 'nexus3',
