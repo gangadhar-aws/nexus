@@ -18,11 +18,11 @@ pipeline{
             
         }
         
-        stage('Docker Build IMage'){
-            steps{
-                sh 'docker build -t gangadhar/devops .'
-            }
-        }
+        // stage('Docker Build IMage'){
+        //     steps{
+        //         sh 'docker build -t gangadhar/devops .'
+        //     }
+        // }
         
         
         stage('Docker Login'){
@@ -34,13 +34,13 @@ pipeline{
             }
         }
         
-        stage('Push Image'){
-            steps{
+        // stage('Push Image'){
+        //     steps{
                 
-                sh 'docker tag gangadhar/devops gangadharbsk/gksk_project'
-                sh 'docker push gangadharbsk/gksk_project'
-            }
-        }
+        //         sh 'docker tag gangadhar/devops gangadharbsk/gksk_project'
+        //         sh 'docker push gangadharbsk/gksk_project'
+        //     }
+        // }
         
     }
 }
