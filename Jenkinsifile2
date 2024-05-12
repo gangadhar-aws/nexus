@@ -27,8 +27,8 @@ pipeline{
         
         stage('Docker Login'){
             steps{
-             withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
+             withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerpwd2')]) {
+                    sh 'docker login -u gangadharbsk -p ${dockerpwd2}'
                     sh 'echo docker login success'
                 }
             }
@@ -37,8 +37,8 @@ pipeline{
         stage('Push Image'){
             steps{
                 
-                sh 'docker tag gangadhar/devops gangadharbsk/newproject'
-                sh 'docker push gangadharbsk/newproject'
+                sh 'docker tag gangadhar/devops gangadharbsk/gksk_project'
+                sh 'docker push gangadharbsk/gksk_project'
             }
         }
         
