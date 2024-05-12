@@ -36,10 +36,10 @@ pipeline{
                     ], 
                         credentialsId: 'nexus3',
                          groupId: 'com.devops.demo',
-                         nexusUrl: 'http://localhost:8081/', 
+                         nexusUrl: 'localhost:8081', 
                          nexusVersion: 'nexus3', 
                          protocol: 'http', 
-                         repository: 'http://localhost:8081/repository/Website-release/', 
+                         repository: 'Website-release', 
                          version: '1.0.1'
             }
         }
