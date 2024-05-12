@@ -24,15 +24,37 @@ pipeline{
         //     }
         // }
         
-        
-        stage('Docker Login'){
+        stage("Upload Artificats"){
             steps{
-             withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerpwd2')]) {
-                    sh 'docker login -u gangadharbsk -p ${dockerpwd2}'
-                    sh 'echo docker login success'
-                }
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'webapp', 
+                        classifier: '', 
+                        file: 'target/webapp-1.0.1.war', 
+                        type: 'war'
+                        ]
+                    ], 
+                        credentialsId: 'nexus3',
+                         groupId: 'com.devops.demo',
+                         nexusUrl: 'localhost:8081', 
+                         nexusVersion: 'nexus3', 
+                         protocol: 'http', 
+                         repository: 'http://localhost:8081/repository/Website-release/', 
+                         version: '1.0.1'
             }
         }
+
+
+
+
+        // stage('Docker Login'){
+        //     steps{
+        //      withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerpwd2')]) {
+        //             sh 'docker login -u gangadharbsk -p ${dockerpwd2}'
+        //             sh 'echo docker login success'
+        //         }
+        //     }
+        // }
         
         // stage('Push Image'){
         //     steps{
