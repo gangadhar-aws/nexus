@@ -3,26 +3,14 @@ pipeline{
     tools{
         maven 'M2_HOME'
     }
+
     stages{
         stage('Checkout'){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gangadhar-aws/02-Maven-Webapp']])
             }
         }
-        stage('Build Application'){
-            steps{
-                sh 'mvn clean install'
-            }pipeline{
-    agent any
-    tools{
-        maven 'M2_HOME'
-    }
-    stages{
-        stage('Checkout'){
-            steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/gangadhar-aws/02-Maven-Webapp']])
-            }
-        }
+
         stage('Build Application'){
             steps{
                 sh 'mvn clean install'
@@ -55,37 +43,29 @@ pipeline{
         }
         
     }
-
-    
 }
+
             
-        }
+//         }
         
-        stage('Docker Build IMage'){
-            steps{
-                sh 'docker build -t gangadhar/devops .'
-            }
-        }
-        
-        
-        stage('Docker Login'){
-            steps{
-             withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
-                    sh 'echo docker login success'
-                }
-            }
-        }
-        
-        stage('Push Image'){
-            steps{
-                
-                sh 'docker tag gangadhar/devops gangadharbsk/newproject'
-                sh 'docker push gangadharbsk/newproject'
-            }
-        }
-        
-    }
-
-    
-}
+//         stage('Docker Build IMage'){
+//             steps{
+//                 sh 'docker build -t gangadhar/devops .'
+//             }
+//         }
+//         stage('Docker Login'){
+//             steps{
+//              withCredentials([string(credentialsId: 'gangadharbsk', variable: 'dockerhubpwd')]) {
+//                     sh 'docker login -u gangadharbsk -p ${dockerhubpwd}'
+//                     sh 'echo docker login success'
+//                 }
+//             }
+//         }      
+//         stage('Push Image'){
+//             steps{                
+//                 sh 'docker tag gangadhar/devops gangadharbsk/newproject'
+//                 sh 'docker push gangadharbsk/newproject'
+//             }
+//         }
+//     }  
+// }
