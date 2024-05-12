@@ -1,6 +1,6 @@
 FROM tomcat
 
-LABEL maintainer="Gangadhar Bandela"
+#LABEL maintainer="Gangadhar Bandela"
 
 ADD ./target/01-Web-App.war /usr/local/tomcat/webapps/
 
